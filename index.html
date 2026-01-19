@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedoro</title>
+    <link rel = "stylesheet" href = "styles.css">
+    <link rel="icon" href="imgs/favicon.png">
+
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="timer-container">
+            <div class="session-label" id="sessionLabel">Focus Time</div>
+            <div class="timer-display">
+                <canvas id="squirtleCanvas" class="squirtle" width="80" height="80"></canvas>
+                <div class="timer-box">
+                    <div class="timer-text" id="timerDisplay">25:00</div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="startBtn" onclick="startTimer()">Start</button>
+                <button id="pauseBtn" onclick="pauseTimer()" disabled>Pause</button>
+                <button id="resetBtn" onclick="resetTimer()">Reset</button>
+            </div>
+            <div class="progress-info" id="progressInfo">
+                Sessions completed: <span id="sessionsCount">0</span> 🎴
+            </div>
+            <div class="theme-switcher">
+                <button class="theme-btn" onclick="switchTheme('squirtle')">💧 Squirtle</button>
+                <button class="theme-btn" onclick="switchTheme('charmander')">🔥 Charmander</button>
+                <button class="theme-btn" onclick="switchTheme('bulbasaur')">🌿 Bulbasaur</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src = "main.js"></script>
+    </body>
+</html>
