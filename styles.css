@@ -56,7 +56,7 @@ body {
     font-weight: bold;
 }
 
-.squirtle {
+.pokemon {
     width: 80px;
     height: 80px;
 }
@@ -147,7 +147,7 @@ button:disabled {
         padding: 15px 20px;
     }
 
-    .squirtle {
+    .pokemon {
         width: 60px;
         height: 60px;
     }

@@ -1,55 +1,7 @@
-// Draw pixel art Squirtle
-const canvas = document.getElementById('squirtleCanvas');
-const ctx = canvas.getContext('2d');
+import {Charmander} from './char.js'
+import {Squirtle} from './squirt.js'
+import {Bulbasaur} from '/bulb.js'
 
-// Squirtle pixel art (simplified, cute version)
-const squirtle = [
-    [0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-    [0,0,0,0,1,1,2,2,2,2,2,2,2,2,1,1,0,0,0,0],
-    [0,0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,1,0,0,0],
-    [0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0,0],
-    [0,1,2,2,2,3,3,3,2,2,2,2,3,3,3,2,2,2,1,0],
-    [0,1,2,2,3,3,4,3,3,2,2,3,3,4,3,3,2,2,1,0],
-    [1,2,2,2,3,4,4,4,3,2,2,3,4,4,4,3,2,2,2,1],
-    [1,2,2,2,3,3,4,3,3,2,2,3,3,4,3,3,2,2,2,1],
-    [1,2,2,2,2,3,3,3,2,2,2,2,3,3,3,2,2,2,2,1],
-    [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
-    [1,2,2,2,2,2,5,5,5,5,5,5,5,2,2,2,2,2,2,1],
-    [1,2,2,2,2,2,2,5,5,5,5,5,2,2,2,2,2,2,2,1],
-    [0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0],
-    [0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0],
-    [0,0,1,2,2,2,2,2,2,6,6,2,2,2,2,2,2,1,0,0],
-    [0,0,0,1,2,2,2,2,6,6,6,6,2,2,2,2,1,0,0,0],
-    [0,0,0,0,1,1,2,2,2,6,6,2,2,2,1,1,0,0,0,0],
-    [0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-];
-
-const colors = {
-    0: '#00000000',  // transparent
-    1: '#2A5F80',    // dark outline
-    2: '#7DD3FC',    // light blue body
-    3: '#FFFFFF',    // white eyes
-    4: '#1A1A1A',    // black pupils
-    5: '#FF6B9D',    // pink mouth
-    6: '#5AB9EA'     // shell swirl
-};
-
-function drawSquirtle() {
-    const scale = 4;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    squirtle.forEach((row, y) => {
-        row.forEach((pixel, x) => {
-            if (pixel !== 0) {
-                ctx.fillStyle = colors[pixel];
-                ctx.fillRect(x * scale, y * scale, scale, scale);
-            }
-        });
-    });
-}
-
-drawSquirtle();
 
 // Timer logic
 let timeLeft = 25 * 60; // 25 minutes in seconds
@@ -58,6 +10,14 @@ let isPaused = false;
 let interval = null;
 let sessionsCompleted = 0;
 let isBreak = false;
+
+// Frank - Add randomisation of theme at start
+
+let theme = ["squirtle", "bulbasaur", "charmander"][Math.floor(Math.random() * 3)];
+
+const squirtleScreen = Squirtle()
+Squirtle.drawSquirtle()
+
 
 const timerDisplay = document.getElementById('timerDisplay');
 const sessionLabel = document.getElementById('sessionLabel');
@@ -148,14 +108,33 @@ setInterval(() => {
     }
 }, 1000);
 
+const squirButton = document.getElementById('squirtle-theme-btn')
+const charButton = document.getElementById('charmander-theme-btn')
+const bulbButton = document.getElementById('bulbasaur-theme-btn')
+
+squirButton.addEventListener('click', ()=> {
+    switchTheme("squirtle")
+})
+
+charButton.addEventListener('click', ()=> {
+    switchTheme("char")
+})
+
+bulbButton.addEventListener('click', ()=> {
+    switchTheme("bulbasaur")
+})
+
+
 function switchTheme(theme) {
     // Will navigate to different theme pages when they're created
-    if (theme === 'charmander') {
-        alert('Charmander page coming soon! 🔥');
-        // Future: window.location.href = 'pomodoro-charmander.html';
+    if (theme === 'char') {
+        
     } else if (theme === 'bulbasaur') {
         alert('Bulbasaur page coming soon! 🌿');
         // Future: window.location.href = 'pomodoro-bulbasaur.html';
+    }
+    else if (theme === "squirtle") {
+        alert("on squirtle page rn")
     }
     // Already on Squirtle page, do nothing
 }
