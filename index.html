@@ -15,23 +15,23 @@
         <div class="timer-container">
             <div class="session-label" id="sessionLabel">Focus Time</div>
             <div class="timer-display">
-                <canvas id="Canvas" class = "pokemon" width="80" height="80"></canvas>
+                <canvas id="Canvas" class = "pokemon-sprite" width="80" height="80"></canvas>
                 <div class="timer-box">
                     <div class="timer-text" id="timerDisplay">25:00</div>
                 </div>
             </div>
             <div class="controls">
-                <button id="startBtn" onclick="startTimer()">Start</button>
-                <button id="pauseBtn" onclick="pauseTimer()" disabled>Pause</button>
-                <button id="resetBtn" onclick="resetTimer()">Reset</button>
+                <button id="startBtn" >Start</button>
+                <button id="pauseBtn" disabled>Pause</button>
+                <button id="resetBtn" >Reset</button>
             </div>
             <div class="progress-info" id="progressInfo">
                 Sessions completed: <span id="sessionsCount">0</span> 🎴
             </div>
             <div class="theme-switcher">
-                <button class="squirtle-theme-btn" >💧 Squirtle</button>
-                <button class="charmander-theme-btn" >🔥 Charmander</button>
-                <button class="bulbasaur-theme-btn" >🌿 Bulbasaur</button>
+                <button id = "squirtle-theme-btn" class="theme-btn" >💧 Squirtle</button>
+                <button id = "charmander-theme-btn" class="theme-btn" >🔥 Charmander</button>
+                <button id = "bulbasaur-theme-btn" class= "theme-btn" >🌿 Bulbasaur</button>
             </div>
         </div>
     </div>
@@ -40,6 +40,6 @@
 
 
 
-    <script src = "main.js"></script>
+    <script type = "module" src = "main.js"></script>
     </body>
 </html>

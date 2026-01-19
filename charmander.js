@@ -1,6 +1,6 @@
 export function Charmander() {
 
-        const canvas = document.getElementById('charmanderCanvas');
+        const canvas = document.getElementById('Canvas');
         canvas.innerHTML = ""
         const ctx = canvas.getContext('2d');
 
@@ -26,6 +26,18 @@ export function Charmander() {
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,7,6,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0]
         ];
+
+        const colors = {
+            0: '#00000000',  // transparent
+            1: '#8B2F15',    // dark outline
+            2: '#FF9D5C',    // orange body
+            3: '#FFFFFF',    // white eyes
+            4: '#1A1A1A',    // black pupils
+            5: '#FFD93D',    // yellow belly
+            6: '#FF6B3D',    // flame red
+            7: '#FFD93D'     // flame yellow
+        };
+    
 
 
     function drawCharmander() {

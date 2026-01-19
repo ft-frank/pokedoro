@@ -1,6 +1,6 @@
 export function Bulbasaur() {
     
-        const canvas = document.getElementById('bulbasaurCanvas');
+        const canvas = document.getElementById('Canvas');
         canvas.innerHTML = ""
         const ctx = canvas.getContext('2d');
 
@@ -52,7 +52,7 @@ export function Bulbasaur() {
             });
         }
 
-        drawBulbasaur();
+        return drawBulbasaur();
 }
 
 // Draw pixel art Bulbasaur

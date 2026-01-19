@@ -1,3 +1,4 @@
+/* Base styles - applies to all themes */
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +6,6 @@
 }
 
 body {
-    background: #5AB9EA;
     font-family: 'Courier New', monospace;
     display: flex;
     justify-content: center;
@@ -15,6 +15,7 @@ body {
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -24,12 +25,11 @@ body {
 }
 
 .timer-container {
-    background: #4A9FD8;
-    border: 8px solid #3B7FB0;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 8px 0 #2A5F80, 0 12px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .timer-display {
@@ -41,33 +41,30 @@ body {
 }
 
 .timer-box {
-    background: #2A5F80;
-    border: 4px solid #1A3F50;
     padding: 20px 30px;
     border-radius: 12px;
     min-width: 200px;
+    transition: all 0.3s ease;
 }
 
 .timer-text {
     font-size: 48px;
-    color: #5AB9EA;
-    text-shadow: 2px 2px 0 #1A3F50;
     letter-spacing: 4px;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-.pokemon {
+.pokemon-sprite {
     width: 80px;
     height: 80px;
 }
 
 .session-label {
-    color: #E8F4FA;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 0 #2A5F80;
+    transition: all 0.3s ease;
 }
 
 .controls {
@@ -80,7 +77,6 @@ body {
 button {
     background: #FFD93D;
     border: 4px solid #E8B923;
-    color: #2A5F80;
     padding: 15px 30px;
     font-size: 16px;
     font-family: 'Courier New', monospace;
@@ -112,9 +108,8 @@ button:disabled {
 
 .progress-info {
     margin-top: 20px;
-    color: #E8F4FA;
     font-size: 14px;
-    text-shadow: 1px 1px 0 #2A5F80;
+    transition: all 0.3s ease;
 }
 
 .theme-switcher {
@@ -124,19 +119,165 @@ button:disabled {
     flex-wrap: wrap;
     margin-top: 25px;
     padding-top: 20px;
+    transition: border-color 0.3s ease;
+}
+
+/* ============================================
+   SQUIRTLE THEME 
+   ============================================ */
+body.squirtle {
+    background: #5AB9EA;
+}
+
+body.squirtle .timer-container {
+    background: #4A9FD8;
+    border: 8px solid #3B7FB0;
+    box-shadow: 0 8px 0 #2A5F80, 0 12px 20px rgba(0,0,0,0.3);
+}
+
+body.squirtle .timer-box {
+    background: #2A5F80;
+    border: 4px solid #1A3F50;
+}
+
+body.squirtle .timer-text {
+    color: #5AB9EA;
+    text-shadow: 2px 2px 0 #1A3F50;
+}
+
+body.squirtle .session-label {
+    color: #E8F4FA;
+    text-shadow: 2px 2px 0 #2A5F80;
+}
+
+body.squirtle button {
+    color: #2A5F80;
+}
+
+body.squirtle .progress-info {
+    color: #E8F4FA;
+    text-shadow: 1px 1px 0 #2A5F80;
+}
+
+body.squirtle .theme-switcher {
     border-top: 3px dashed #3B7FB0;
 }
 
-.theme-btn {
+body.squirtle .theme-btn {
     background: #E8F4FA;
     border: 4px solid #B8D4E4;
     color: #2A5F80;
 }
 
-.theme-btn:hover {
+body.squirtle .theme-btn:hover {
     background: #FFFFFF;
 }
 
+/* ============================================
+   CHARMANDER THEME 
+   ============================================ */
+body.charmander {
+    background: #FF6B3D;
+}
+
+body.charmander .timer-container {
+    background: #FF8C42;
+    border: 8px solid #E55D2B;
+    box-shadow: 0 8px 0 #C44520, 0 12px 20px rgba(0,0,0,0.3);
+}
+
+body.charmander .timer-box {
+    background: #C44520;
+    border: 4px solid #8B2F15;
+}
+
+body.charmander .timer-text {
+    color: #FFD93D;
+    text-shadow: 2px 2px 0 #8B2F15;
+}
+
+body.charmander .session-label {
+    color: #FFF5E6;
+    text-shadow: 2px 2px 0 #C44520;
+}
+
+body.charmander button {
+    color: #8B2F15;
+}
+
+body.charmander .progress-info {
+    color: #FFF5E6;
+    text-shadow: 1px 1px 0 #C44520;
+}
+
+body.charmander .theme-switcher {
+    border-top: 3px dashed #E55D2B;
+}
+
+body.charmander .theme-btn {
+    background: #FFF5E6;
+    border: 4px solid #FFD4A3;
+    color: #8B2F15;
+}
+
+body.charmander .theme-btn:hover {
+    background: #FFFFFF;
+}
+
+/* ============================================
+   BULBASAUR THEME 
+   ============================================ */
+body.bulbasaur {
+    background: #48C774;
+}
+
+body.bulbasaur .timer-container {
+    background: #6FD68F;
+    border: 8px solid #3FA55C;
+    box-shadow: 0 8px 0 #2D7A44, 0 12px 20px rgba(0,0,0,0.3);
+}
+
+body.bulbasaur .timer-box {
+    background: #2D7A44;
+    border: 4px solid #1D5A30;
+}
+
+body.bulbasaur .timer-text {
+    color: #A8E6CF;
+    text-shadow: 2px 2px 0 #1D5A30;
+}
+
+body.bulbasaur .session-label {
+    color: #E8F8EC;
+    text-shadow: 2px 2px 0 #2D7A44;
+}
+
+body.bulbasaur button {
+    color: #1D5A30;
+}
+
+body.bulbasaur .progress-info {
+    color: #E8F8EC;
+    text-shadow: 1px 1px 0 #2D7A44;
+}
+
+body.bulbasaur .theme-switcher {
+    border-top: 3px dashed #3FA55C;
+}
+
+body.bulbasaur .theme-btn {
+    background: #E8F8EC;
+    border: 4px solid #B8E6CF;
+    color: #1D5A30;
+}
+
+body.bulbasaur .theme-btn:hover {
+    background: #FFFFFF;
+}
+
+/* ============================================
+   RESPONSIVE STYLES 
+   ============================================ */
 @media (max-width: 600px) {
     .timer-text {
         font-size: 36px;
@@ -147,7 +288,7 @@ button:disabled {
         padding: 15px 20px;
     }
 
-    .pokemon {
+    .pokemon-sprite {
         width: 60px;
         height: 60px;
     }

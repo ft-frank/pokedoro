@@ -1,6 +1,6 @@
 export function Squirtle(){
     // Draw pixel art Squirtle
-    const canvas = document.getElementById('squirtleCanvas');
+    const canvas = document.getElementById('Canvas');
     canvas.innerHTML = ""
     const ctx = canvas.getContext('2d');
 

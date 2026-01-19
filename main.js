@@ -1,6 +1,10 @@
-import {Charmander} from './char.js'
-import {Squirtle} from './squirt.js'
-import {Bulbasaur} from '/bulb.js'
+import {Charmander} from './charmander.js'
+import {Squirtle} from './squirtle.js'
+import {Bulbasaur} from '/bulbasaur.js'
+
+
+const body = document.querySelector("body")
+
 
 
 // Timer logic
@@ -14,9 +18,7 @@ let isBreak = false;
 // Frank - Add randomisation of theme at start
 
 let theme = ["squirtle", "bulbasaur", "charmander"][Math.floor(Math.random() * 3)];
-
-const squirtleScreen = Squirtle()
-Squirtle.drawSquirtle()
+switchTheme(theme)
 
 
 const timerDisplay = document.getElementById('timerDisplay');
@@ -25,6 +27,18 @@ const startBtn = document.getElementById('startBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const resetBtn = document.getElementById('resetBtn');
 const sessionsCount = document.getElementById('sessionsCount');
+
+startBtn.addEventListener('click', () => {
+    startTimer()
+})
+
+pauseBtn.addEventListener('click', () => {
+    pauseTimer()
+})
+
+resetBtn.addEventListener('click', () => {
+    resetTimer()
+})
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -72,12 +86,13 @@ function resetTimer() {
     pauseBtn.disabled = true;
 }
 
+
 function timerComplete() {
     if (!isBreak) {
         // Focus session complete - show pack opening!
         sessionsCompleted++;
         sessionsCount.textContent = sessionsCompleted;
-        alert('🎉 Focus complete! Time to open a Pokemon pack! 🎴');
+        // alert('🎉 Focus complete! Time to open a Pokemon pack! 🎴'); Frank - this feature is a not yet.
         
         // Switch to break
         isBreak = true;
@@ -97,10 +112,9 @@ function timerComplete() {
     pauseBtn.disabled = true;
 }
 
-// Make Squirtle animate when timer is running
+// FRANK - Make Pokemon animate when timer is running
 setInterval(() => {
     if (isRunning && Math.random() > 0.9) {
-        // Squirtle blinks occasionally
         canvas.style.transform = 'scaleY(0.8)';
         setTimeout(() => {
             canvas.style.transform = 'scaleY(1)';
@@ -117,7 +131,7 @@ squirButton.addEventListener('click', ()=> {
 })
 
 charButton.addEventListener('click', ()=> {
-    switchTheme("char")
+    switchTheme("charmander")
 })
 
 bulbButton.addEventListener('click', ()=> {
@@ -126,15 +140,18 @@ bulbButton.addEventListener('click', ()=> {
 
 
 function switchTheme(theme) {
-    // Will navigate to different theme pages when they're created
-    if (theme === 'char') {
-        
-    } else if (theme === 'bulbasaur') {
-        alert('Bulbasaur page coming soon! 🌿');
-        // Future: window.location.href = 'pomodoro-bulbasaur.html';
+    body.className = theme
+    if (theme == "squirtle") {
+        const squirtleScreen = Squirtle()
+   
     }
-    else if (theme === "squirtle") {
-        alert("on squirtle page rn")
+    else if  (theme == "charmander") {
+        const charmanderScreen = Charmander()
+    
     }
-    // Already on Squirtle page, do nothing
+    else if (theme == "bulbasaur") {
+        const bulbasaurScreen = Bulbasaur()
+
+    }
+
 }
