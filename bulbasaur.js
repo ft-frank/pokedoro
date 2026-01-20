@@ -52,7 +52,7 @@ export function Bulbasaur() {
             });
         }
 
-        return drawBulbasaur();
+        return {draw: drawBulbasaur()};
 }
 
 // Draw pixel art Bulbasaur

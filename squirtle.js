@@ -51,7 +51,7 @@ export function Squirtle(){
         });
     }
 
-return drawSquirtle()
+return {draw:drawSquirtle()}
 
 }
 

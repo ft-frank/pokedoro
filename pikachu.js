@@ -52,5 +52,5 @@ export function Pikachu(){
         });
     }
 
-    return drawPikachu()
+    return {draw: drawPikachu()}
 }

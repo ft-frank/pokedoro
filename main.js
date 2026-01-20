@@ -1,62 +1,31 @@
 import {createTimer} from './timer.js'
-import {Charmander} from './charmander.js'
-import {Squirtle} from './squirtle.js'
-import {Bulbasaur} from './bulbasaur.js'
-import {Pikachu} from './pikachu.js'
+import {createThemeManager} from './theme.js'
 
+// DOM elements
+const squirtleBtn = document.getElementById('squirtle-theme-btn');
+const charmanderBtn = document.getElementById('charmander-theme-btn');
+const bulbasaurBtn = document.getElementById('bulbasaur-theme-btn');
+const pikachuBtn = document.getElementById('pikachu-theme-btn');
 
-const body = document.querySelector("body")
+// Create instances
+const timer = createTimer();
+const themes = createThemeManager();
 
-// Frank - Add randomisation of theme at start
+// Initialize with saved/random theme
+themes.switch(themes.saved());
 
- const initialiseTimer = createTimer()
-
-
-let theme = ["squirtle", "bulbasaur", "charmander", "pikachu"][Math.floor(Math.random() * 4)];
-switchTheme(theme)
-
-
-
-const squirButton = document.getElementById('squirtle-theme-btn')
-const charButton = document.getElementById('charmander-theme-btn')
-const bulbButton = document.getElementById('bulbasaur-theme-btn')
-const pikaButton = document.getElementById('pikachu-theme-btn')
-
-squirButton.addEventListener('click', ()=> {
-    switchTheme("squirtle")
-})
-
-charButton.addEventListener('click', ()=> {
-    switchTheme("charmander")
-})
-
-bulbButton.addEventListener('click', ()=> {
-    switchTheme("bulbasaur")
-})
-
-pikaButton.addEventListener('click', () => {
-    switchTheme("pikachu")
-})
+// Bind theme buttons
+squirtleBtn.addEventListener('click', () => themes.switch('squirtle'));
+charmanderBtn.addEventListener('click', () => themes.switch('charmander'));
+bulbasaurBtn.addEventListener('click', () => themes.switch('bulbasaur'));
+pikachuBtn.addEventListener('click', () => themes.switch('pikachu'));
 
 
 
-function switchTheme(theme) {
-    body.className = theme
-    if (theme == "squirtle") {
-        const squirtleScreen = Squirtle()
-   
-    }
-    else if  (theme == "charmander") {
-        const charmanderScreen = Charmander()
-    
-    }
-    else if (theme == "bulbasaur") {
-        const bulbasaurScreen = Bulbasaur()
 
-    }
 
-    else if (theme == "pikachu") {
-        const pikaButton = Pikachu()
-    }
 
-}
+
+
+
+

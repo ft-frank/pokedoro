@@ -54,5 +54,5 @@ export function Charmander() {
         }
 
 
-    return drawCharmander()
+    return {draw: drawCharmander()}
 }
