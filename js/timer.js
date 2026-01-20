@@ -1,4 +1,4 @@
-export function createTimer(minutes = 25) {
+export function createTimer(minutes = 1) {
 
 
     const timerDisplay = document.getElementById('timerDisplay');

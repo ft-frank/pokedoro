@@ -1,5 +1,5 @@
-import {createTimer} from './timer.js'
-import {createThemeManager} from './theme.js'
+import {createTimer} from './js/timer.js'
+import {createThemeManager} from './js/theme.js'
 
 // DOM elements
 const squirtleBtn = document.getElementById('squirtle-theme-btn');
