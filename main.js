@@ -1,14 +1,36 @@
 import {Charmander} from './charmander.js'
 import {Squirtle} from './squirtle.js'
-import {Bulbasaur} from '/bulbasaur.js'
-
+import {Bulbasaur} from './bulbasaur.js'
 
 const body = document.querySelector("body")
+const timerDisplay = document.getElementById('timerDisplay');
+const sessionLabel = document.getElementById('sessionLabel');
+const startBtn = document.getElementById('startBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const resetBtn = document.getElementById('resetBtn');
+const sessionsCount = document.getElementById('sessionsCount');
+
+
+const customTimer = function (interval = 25) {
+    return interval
+}
+alert('bruh')
+let customTime = prompt("How many minutes would you like your pomodoro timer to be")
+
+let timeLeft = customTime * 60
+timerDisplay.textContent = `${customTime}:00`
 
 
 
-// Timer logic
-let timeLeft = 25 * 60; // 25 minutes in seconds
+
+
+
+
+
+
+
+
+
 let isRunning = false;
 let isPaused = false;
 let interval = null;
@@ -20,13 +42,6 @@ let isBreak = false;
 let theme = ["squirtle", "bulbasaur", "charmander"][Math.floor(Math.random() * 3)];
 switchTheme(theme)
 
-
-const timerDisplay = document.getElementById('timerDisplay');
-const sessionLabel = document.getElementById('sessionLabel');
-const startBtn = document.getElementById('startBtn');
-const pauseBtn = document.getElementById('pauseBtn');
-const resetBtn = document.getElementById('resetBtn');
-const sessionsCount = document.getElementById('sessionsCount');
 
 startBtn.addEventListener('click', () => {
     startTimer()
