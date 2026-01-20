@@ -12,15 +12,7 @@ const sessionsCount = document.getElementById('sessionsCount');
 const canvas = document.getElementById('Canvas');
 const ctx = canvas.getContext('2d');
 
-alert('bruh')
-let customTime = prompt("How many minutes would you like your pomodoro timer to be")
-
-let timeLeft = customTime * 60
-timerDisplay.textContent = `${customTime}:00`
-
-
-
-
+let timeLeft = 25 * 60
 let isRunning = false;
 let isPaused = false;
 let interval = null;
