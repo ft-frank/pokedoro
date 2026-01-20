@@ -276,6 +276,57 @@ body.bulbasaur .theme-btn:hover {
 }
 
 /* ============================================
+   PIKACHU THEME 
+   ============================================ */
+body.pikachu {
+    background: #FFD700;
+}
+
+body.pikachu .timer-container {
+    background: #FFC700;
+    border: 8px solid #E8B923;
+    box-shadow: 0 8px 0 #B8941C, 0 12px 20px rgba(0,0,0,0.3);
+}
+
+body.pikachu .timer-box {
+    background: #B8941C;
+    border: 4px solid #8B6914;
+}
+
+body.pikachu .timer-text {
+    color: #FFD700;
+    text-shadow: 2px 2px 0 #8B6914;
+}
+
+body.pikachu .session-label {
+    color: #FFFACD;
+    text-shadow: 2px 2px 0 #B8941C;
+}
+
+body.pikachu button {
+    color: #8B6914;
+}
+
+body.pikachu .progress-info {
+    color: #FFFACD;
+    text-shadow: 1px 1px 0 #B8941C;
+}
+
+body.pikachu .theme-switcher {
+    border-top: 3px dashed #E8B923;
+}
+
+body.pikachu .theme-btn {
+    background: #FFFACD;
+    border: 4px solid #FFE680;
+    color: #8B6914;
+}
+
+body.pikachu .theme-btn:hover {
+    background: #FFFFFF;
+}
+
+/* ============================================
    RESPONSIVE STYLES 
    ============================================ */
 @media (max-width: 600px) {
