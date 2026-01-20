@@ -9,24 +9,14 @@ const startBtn = document.getElementById('startBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const resetBtn = document.getElementById('resetBtn');
 const sessionsCount = document.getElementById('sessionsCount');
+const canvas = document.getElementById('Canvas');
+const ctx = canvas.getContext('2d');
 
-
-const customTimer = function (interval = 25) {
-    return interval
-}
 alert('bruh')
 let customTime = prompt("How many minutes would you like your pomodoro timer to be")
 
 let timeLeft = customTime * 60
 timerDisplay.textContent = `${customTime}:00`
-
-
-
-
-
-
-
-
 
 
 
