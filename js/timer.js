@@ -125,7 +125,7 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
             
             // If not running, update current time
             if (!isRunning) {
-                timeLeft = isBreak ? breakDuration : focusDuration;
+                timeLeft = isBreak ? breakTime : focusTime;
                 updateDisplay();
             }
         },}

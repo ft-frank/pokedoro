@@ -8,33 +8,33 @@ export function createSettings(timer) {
     const settingsModal = document.getElementById('settings-modal');
     const closeSettings = document.getElementById('close-settings');
     const saveSettings = document.getElementById('save-settings');
-    const focusDurationInput = document.getElementById('focus-duration');
-    const breakDurationInput = document.getElementById('break-duration');
+    const focusTimeInput = document.getElementById('focus-duration');
+    const breakTimeInput = document.getElementById('break-duration');
     const overlay = document.querySelector('.settings-overlay');
 
 
     function changeTimer(){
-            const focusDuration = parseInt(focusDurationInput.value);
-            const breakDuration = parseInt(breakDurationInput.value);
+            const focusTime = parseInt(focusTimeInput.value);
+            const breakTime = parseInt(breakTimeInput.value);
             
             // Validate
-            if (focusDuration < 1 || focusDuration > 60) {
+            if (focusTime < 1 || focusTime > 60) {
                 alert('Focus duration must be between 1 and 60 minutes'); //Frank - probably not an alert i don't like alerts
                 return;
             }
             
-            if (breakDuration < 1 || breakDuration > 30) {
+            if (breakTime < 1 || breakTime > 30) {
                 alert('Break duration must be between 1 and 30 minutes');
                 return;
             }
             
             // Save to localStorage
-            localStorage.setItem('focusDuration', focusDuration);
-            localStorage.setItem('breakDuration', breakDuration);
+            localStorage.setItem('focusTime', focusTime);
+            localStorage.setItem('breakTime', breakTime);
             
             //Frank - changeTimer
 
-            timer.changeTimer(focusDuration, breakDuration)
+            timer.changeTimer(focusTime, breakTime)
 
 
             // Close modal
@@ -48,8 +48,8 @@ export function createSettings(timer) {
             settingsModal.classList.add('active');
             
             // Load current values (if you have a timer object with these properties)
-            // focusDurationInput.value = timer.focusDuration || 25;
-            // breakDurationInput.value = timer.breakDuration || 5;
+            // focusTimeInput.value = timer.focusTime || 25;
+            // breakTimeInput.value = timer.breakTime || 5;
         });
 
         // Close settings
