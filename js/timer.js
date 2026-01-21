@@ -18,14 +18,10 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
     
 
     function updateSessions() {
-        if (sessionsCompleted === 0) {
-            sessionsCount.textContent = sessionsCompleted;
-        }
-        else {
-            sessionsCompleted++;
-            sessionsCount.textContent = sessionsCompleted;
-        }
-        localStorage.setItem("sessionsCount", sessionsCount)
+        sessionsCompleted++
+        sessionsCount = sessionsCompleted
+
+        localStorage.setItem("sessionsCount", sessionsCompleted)
     }
 
     function updateDisplay() {
@@ -111,8 +107,8 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
 
     function initialise() {
 
-        updateSessions()
-
+        sessionsCount.textContent = sessionsCompleted
+        
         const startBtn = document.getElementById('startBtn');
         const pauseBtn = document.getElementById('pauseBtn');
         const resetBtn = document.getElementById('resetBtn');

@@ -45,7 +45,7 @@ export function createThemeManager() {
         currentTheme = themeName;
         
         // Save preference
-        localStorage.setItem('selectedTheme', themeName);
+        // localStorage.setItem('selectedTheme', themeName);
     }
     
     function getRandomTheme() {
