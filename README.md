@@ -20,3 +20,13 @@ Super modularity, main.js file less than 50 lines, and alot of imports make it m
 
 
 
+
+
+
+
+
+
+Working on adding a settings feature that allows one to change focus time and break time to preference.
+MAJOR ISSUE - the timer will throttle because of setInterval(), and pause when in the background
+
+
