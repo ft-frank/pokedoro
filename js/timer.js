@@ -19,7 +19,7 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
 
     function updateSessions() {
         sessionsCompleted++
-        sessionsCount = sessionsCompleted
+        sessionsCount.textContent = sessionsCompleted
 
         localStorage.setItem("sessionsCount", sessionsCompleted)
     }
