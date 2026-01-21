@@ -12,7 +12,7 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
     let isPaused = false;
     let interval = null;
     const saved = localStorage.getItem("sessionsCount");
-    let sessionsCompleted = saved ? parseInt(saved) : 0;
+    let sessionsCompleted = parseInt(saved) > 0 ? parseInt(saved) : 0;
     let isBreak = false;
 
     
