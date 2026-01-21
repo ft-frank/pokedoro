@@ -36,6 +36,7 @@ export function createSettings(timer) {
 
             timer.changeTimer(focusTime, breakTime)
 
+            //Frank - change the screen timer
 
             // Close modal
             settingsModal.classList.remove('active');
