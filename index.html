@@ -10,6 +10,49 @@
 
 </head>
 <body>
+
+
+        <!-- Settings button (top right) -->
+    <button id="settings-btn" class="settings-btn">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Settings modal (hidden by default) -->
+    <div id="settings-modal" class="settings-modal">
+        <div class="settings-overlay"></div>
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2>Settings</h2>
+                <button id="close-settings" class="close-btn">&times;</button>
+            </div>
+            
+            <div class="settings-body">
+                <div class="setting-group">
+                    <label for="focus-duration">Focus Duration (minutes)</label>
+                    <input type="number" id="focus-duration" min="1" max="60" value="25">
+                </div>
+                
+                <div class="setting-group">
+                    <label for="break-duration">Break Duration (minutes)</label>
+                    <input type="number" id="break-duration" min="1" max="30" value="5">
+                </div>
+                
+                <button id="save-settings" class="save-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
     
     <div class="container">
         <div class="timer-container">

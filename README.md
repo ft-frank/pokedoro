@@ -18,5 +18,9 @@ also signed up for the pokemon API
 
 Super modularity, main.js file less than 50 lines, and alot of imports make it much easier to edit code as required.
 
+21/1/25 - 
 
+- Google lighthouse reveals 50 SEO
+- Pikachu theme has a low contrast ratio between foreground and background, affecting web accessibility for people that like pikachu. 
 
+- Used claude to vibecode/code for me up a settings tab. 

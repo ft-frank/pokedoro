@@ -1,5 +1,7 @@
+import {createSettings} from './js/settings.js'
 import {createTimer} from './js/timer.js'
 import {createThemeManager} from './js/theme.js'
+
 
 // DOM elements
 const squirtleBtn = document.getElementById('squirtle-theme-btn');
@@ -10,6 +12,7 @@ const pikachuBtn = document.getElementById('pikachu-theme-btn');
 // Create instances
 const timer = createTimer();
 const themes = createThemeManager();
+const settings = createSettings(timer);
 
 // Initialize with saved/random theme
 themes.switch(themes.saved());
