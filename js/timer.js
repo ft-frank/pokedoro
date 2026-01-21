@@ -11,8 +11,22 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
     let isRunning = false;
     let isPaused = false;
     let interval = null;
-    let sessionsCompleted = 0; // add localStorage soon
+    const saved = localStorage.getItem("sessionsCount");
+    let sessionsCompleted = saved ? parseInt(saved) : 0;
     let isBreak = false;
+
+    
+
+    function updateSessions() {
+        if (sessionsCompleted === 0) {
+            sessionsCount.textContent = sessionsCompleted;
+        }
+        else {
+            sessionsCompleted++;
+            sessionsCount.textContent = sessionsCompleted;
+        }
+        localStorage.setItem("sessionsCount", sessionsCount)
+    }
 
     function updateDisplay() {
         const minutes = Math.floor(timeLeft / 60);
@@ -64,10 +78,8 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
     function timerComplete() {
         if (!isBreak) {
             // Focus session complete - show pack opening!
-            sessionsCompleted++;
-            sessionsCount.textContent = sessionsCompleted;
             // alert('🎉 Focus complete! Time to open a Pokemon pack! 🎴'); Frank - this feature is a not yet.
-            
+            updateSessions()
             // Switch to break
             isBreak = true;
             sessionLabel.textContent = 'Break Time';
@@ -99,6 +111,8 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
 
     function initialise() {
 
+        updateSessions()
+
         const startBtn = document.getElementById('startBtn');
         const pauseBtn = document.getElementById('pauseBtn');
         const resetBtn = document.getElementById('resetBtn');
@@ -115,6 +129,8 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
             resetTimer()
         })
 
+    
+
     }       
 
     return {initialise: initialise(), 
@@ -125,7 +141,7 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
             
             // If not running, update current time
             if (!isRunning) {
-                timeLeft = isBreak ? breakTime : focusTime;
+                timeLeft = isBreak ? breakDuration : focusDuration;
                 updateDisplay();
             }
         },}
