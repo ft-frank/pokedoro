@@ -1,27 +1,27 @@
 export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 60) {
 
-
+    // DOM elements - declare at top
     const timerDisplay = document.getElementById('timerDisplay');
     const sessionLabel = document.getElementById('sessionLabel');
     const sessionsCount = document.getElementById('sessionsCount');
+    const startBtn = document.getElementById('startBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const resetBtn = document.getElementById('resetBtn');
     const canvas = document.getElementById('Canvas');
     const ctx = canvas.getContext('2d');
    
-    let timeLeft = minutes * 60
+    // State
+    let timeLeft = minutes * 60;
     let isRunning = false;
     let isPaused = false;
     let interval = null;
-    const saved = localStorage.getItem("sessionsCount");
-    let sessionsCompleted = parseInt(saved) > 0 ? parseInt(saved) : 0;
+    let sessionsCompleted = parseInt(localStorage.getItem("sessionsCount")) || 0;
     let isBreak = false;
 
-    
-
     function updateSessions() {
-        sessionsCompleted++
-        sessionsCount.textContent = sessionsCompleted
-
-        localStorage.setItem("sessionsCount", sessionsCompleted)
+        sessionsCompleted++;
+        sessionsCount.textContent = sessionsCompleted;
+        localStorage.setItem("sessionsCount", sessionsCompleted);
     }
 
     function updateDisplay() {
@@ -42,7 +42,6 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
                     timeLeft--;
                     updateDisplay();
                 } else {
-                    // Timer finished!
                     clearInterval(interval);
                     timerComplete();
                 }
@@ -70,22 +69,18 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
         pauseBtn.disabled = true;
     }
 
-
     function timerComplete() {
         if (!isBreak) {
-            // Focus session complete - show pack opening!
-            // alert('🎉 Focus complete! Time to open a Pokemon pack! 🎴'); Frank - this feature is a not yet.
-            updateSessions()
-            // Switch to break
+            updateSessions();
+            
             isBreak = true;
             sessionLabel.textContent = 'Break Time';
-            timeLeft = 5 * 60; // 5 minute break
+            timeLeft = breakTime;
         } else {
-            // Break complete
             alert('Break over! Ready for another focus session?');
             isBreak = false;
             sessionLabel.textContent = 'Focus Time';
-            timeLeft = 25 * 60;
+            timeLeft = focusTime;
         }
         
         updateDisplay();
@@ -94,7 +89,7 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
         pauseBtn.disabled = true;
     }
 
-    // FRANK - Make Pokemon animate when timer is running
+    // Pokemon animation
     setInterval(() => {
         if (isRunning && Math.random() > 0.9) {
             canvas.style.transform = 'scaleY(0.8)';
@@ -104,43 +99,37 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
         }
     }, 1000);
 
-
+    // Initialize
     function initialise() {
-
-        sessionsCount.textContent = sessionsCompleted
+        sessionsCount.textContent = sessionsCompleted;
+        updateDisplay();
         
-        const startBtn = document.getElementById('startBtn');
-        const pauseBtn = document.getElementById('pauseBtn');
-        const resetBtn = document.getElementById('resetBtn');
+        startBtn.addEventListener('click', startTimer);
+        pauseBtn.addEventListener('click', pauseTimer);
+        resetBtn.addEventListener('click', resetTimer);
+    }
 
-        startBtn.addEventListener('click', () => {
-            startTimer()
-        })
+    // Call initialize immediately
+    initialise();
 
-        pauseBtn.addEventListener('click', () => {
-            pauseTimer()
-        })
-
-        resetBtn.addEventListener('click', () => {
-            resetTimer()
-        })
-
-    
-
-    }       
-
-    return {initialise: initialise(), 
+    // Return public API
+    return {
         changeTimer(newFocusMinutes, newBreakMinutes) {
-            // Update the durations
             focusTime = newFocusMinutes * 60;
             breakTime = newBreakMinutes * 60;
             
-            // If not running, update current time
             if (!isRunning) {
                 timeLeft = isBreak ? breakTime : focusTime;
                 updateDisplay();
             }
-        },}
-
-
+        },
+        
+        start: startTimer,
+        pause: pauseTimer,
+        reset: resetTimer,
+        
+        get time() { return timeLeft; },
+        get active() { return isRunning; },
+        get sessions() { return sessionsCompleted; }
+    };
 }
