@@ -8,6 +8,7 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
     const pauseBtn = document.getElementById('pauseBtn');
     const resetBtn = document.getElementById('resetBtn');
     const canvas = document.getElementById('Canvas');
+    const title = document.getElementById('title')
     const ctx = canvas.getContext('2d');
    
     // State
@@ -28,6 +29,7 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        title.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} - Pokedoro`;
     }
 
     function startTimer() {
