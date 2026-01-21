@@ -14,11 +14,6 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
     let sessionsCompleted = 0; // add localStorage soon
     let isBreak = false;
 
-    function changeTimer(focusTime, breakTime) {
-        focusTime = focusTime
-        breakTime = breakTime
-
-    }
     function updateDisplay() {
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
@@ -122,7 +117,18 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
 
     }       
 
-    return {initialise: initialise()}
+    return {initialise: initialise(), 
+        changeTimer(newFocusMinutes, newBreakMinutes) {
+            // Update the durations
+            focusTime = newFocusMinutes * 60;
+            breakTime = newBreakMinutes * 60;
+            
+            // If not running, update current time
+            if (!isRunning) {
+                timeLeft = isBreak ? breakDuration : focusDuration;
+                updateDisplay();
+            }
+        },}
 
 
 }

@@ -24,3 +24,5 @@ Super modularity, main.js file less than 50 lines, and alot of imports make it m
 - Pikachu theme has a low contrast ratio between foreground and background, affecting web accessibility for people that like pikachu. 
 
 - Used claude to vibecode/code for me up a settings tab. 
+
+

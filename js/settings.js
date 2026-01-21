@@ -13,7 +13,7 @@ export function createSettings(timer) {
     const overlay = document.querySelector('.settings-overlay');
 
 
-     function changeTimer(){
+    function changeTimer(){
             const focusDuration = parseInt(focusDurationInput.value);
             const breakDuration = parseInt(breakDurationInput.value);
             
