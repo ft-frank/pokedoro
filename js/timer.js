@@ -1,4 +1,4 @@
-export function createTimer(minutes = 25) {
+export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 60) {
 
 
     const timerDisplay = document.getElementById('timerDisplay');
@@ -8,14 +8,11 @@ export function createTimer(minutes = 25) {
     const ctx = canvas.getContext('2d');
    
     let timeLeft = minutes * 60
-    const timerTime = minutes * 60
-    const breakTime = Math.floor((minutes % 25 ) * 5 * 60)
     let isRunning = false;
     let isPaused = false;
     let interval = null;
     let sessionsCompleted = 0; // add localStorage soon
     let isBreak = false;
-
 
     function updateDisplay() {
         const minutes = Math.floor(timeLeft / 60);
@@ -57,7 +54,7 @@ export function createTimer(minutes = 25) {
         clearInterval(interval);
         isRunning = false;
         isPaused = false;
-        timeLeft = isBreak ? breakTime : timerTime;
+        timeLeft = isBreak ? breakTime : focusTime;
         updateDisplay();
         startBtn.disabled = false;
         pauseBtn.disabled = true;
@@ -120,7 +117,18 @@ export function createTimer(minutes = 25) {
 
     }       
 
-    return initialise()
+    return {initialise: initialise(), 
+        changeTimer(newFocusMinutes, newBreakMinutes) {
+            // Update the durations
+            focusTime = newFocusMinutes * 60;
+            breakTime = newBreakMinutes * 60;
+            
+            // If not running, update current time
+            if (!isRunning) {
+                timeLeft = isBreak ? breakDuration : focusDuration;
+                updateDisplay();
+            }
+        },}
 
 
 }
