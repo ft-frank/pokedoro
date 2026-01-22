@@ -48,9 +48,6 @@ export function createSettings(timer) {
         settingsBtn.addEventListener('click', () => {
             settingsModal.classList.add('active');
             
-            // Load current values (if you have a timer object with these properties)
-            // focusTimeInput.value = timer.focusTime || 25;
-            // breakTimeInput.value = timer.breakTime || 5;
         });
 
         // Close settings

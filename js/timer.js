@@ -1,4 +1,4 @@
-export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 60) {
+export function createTimer() {
 
     // DOM elements - declare at top
     const timerDisplay = document.getElementById('timerDisplay');
@@ -11,8 +11,14 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
     const title = document.getElementById('title')
     const ctx = canvas.getContext('2d');
    
+    //Frank - initialising values
+
+    let focusTime = Number(localStorage.getItem("focusTime")) ?? 25 * 60;
+    let breakTime = Number(localStorage.getItem("breakTime")) ?? 5 * 60;
+
+
     // State
-    let timeLeft = minutes * 60;
+    let timeLeft = focusTime
     let isRunning = false;
     let isPaused = false;
     let interval = null;
@@ -79,7 +85,6 @@ export function createTimer(minutes = 25, focusTime = 25 * 60, breakTime = 5 * 6
             sessionLabel.textContent = 'Break Time';
             timeLeft = breakTime;
         } else {
-            alert('Break over! Ready for another focus session?');
             isBreak = false;
             sessionLabel.textContent = 'Focus Time';
             timeLeft = focusTime;
