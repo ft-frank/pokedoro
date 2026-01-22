@@ -13,8 +13,8 @@ export function createTimer() {
    
     //Frank - initialising values
 
-    let focusTime = Number(localStorage.getItem("focusTime")) ?? 25 * 60;
-    let breakTime = Number(localStorage.getItem("breakTime")) ?? 5 * 60;
+    let focusTime = Number(localStorage.getItem("focusTime")) * 60 ?? 25 * 60;
+    let breakTime = Number(localStorage.getItem("breakTime")) * 60 ?? 5 * 60;
 
 
     // State
