@@ -11,6 +11,8 @@ export function createSettings(timer) {
     const focusTimeInput = document.getElementById('focus-duration');
     const breakTimeInput = document.getElementById('break-duration');
     const overlay = document.querySelector('.settings-overlay');
+    const focusInput = document.getElementById('focus-duration')
+    const breakInput = document.getElementById('break-duration')
 
 
     function changeTimer(){
@@ -48,6 +50,10 @@ export function createSettings(timer) {
         settingsBtn.addEventListener('click', () => {
             settingsModal.classList.add('active');
             
+            //Frank - settings are saved within the settings tab
+            focusInput.value = localStorage.getItem('focusTime') ?? 25
+            breakInput.value = localStorage.getItem('breakTime') ?? 5
+            
         });
 
         // Close settings
@@ -67,10 +73,20 @@ export function createSettings(timer) {
             }
         });
 
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && settingsModal.classList.contains('active')) {
+                settingsModal.classList.remove('active');
+                changeTimer();
+            }
+        });
+
         // Save settings
         saveSettings.addEventListener('click', () => {
             changeTimer();
         });
+
+
+
 
         }
 
