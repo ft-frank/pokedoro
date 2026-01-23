@@ -7,6 +7,7 @@ export function createTimer() {
     const startBtn = document.getElementById('startBtn');
     const pauseBtn = document.getElementById('pauseBtn');
     const resetBtn = document.getElementById('resetBtn');
+    const skipBtn = document.getElementById('skipBtn');
     const canvas = document.getElementById('Canvas');
     const title = document.getElementById('title')
     const ctx = canvas.getContext('2d');
@@ -19,12 +20,44 @@ export function createTimer() {
 
     // State
     let timeLeft = focusTime
-    console.log(Number(localStorage.getItem("focusTime")))
     let isRunning = false;
     let isPaused = false;
     let interval = null;
     let sessionsCompleted = parseInt(localStorage.getItem("sessionsCount")) || 0;
     let isBreak = false;
+
+     //FRANK - Break Button Logic
+
+    function skipBreak() {
+        // Only works during break
+        if (!isBreak) return;
+        
+        // Stop timer
+        clearInterval(interval);
+        isRunning = false;
+        
+        // Go back to focus
+        isBreak = false;
+        sessionLabel.textContent = 'Focus Time';
+        timeLeft = focusTime;
+        
+        // Update UI
+        updateDisplay();
+        updateSkipButton(); // Hide skip button
+        startBtn.disabled = false;
+        pauseBtn.disabled = true;
+    }
+
+    function updateSkipButton() {
+        if (isBreak) {
+            skipBtn.style.display = 'inline-block';
+        } else {
+            skipBtn.style.display = 'none';
+        }
+    }
+
+
+
 
     function updateSessions() {
         sessionsCompleted++;
@@ -33,10 +66,8 @@ export function createTimer() {
     }
 
     function updateDisplay() {
-        console.log(timeLeft)
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
-        console.log(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         title.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} - Pokedoro`; //Frank - update the tab above
     }
@@ -94,6 +125,7 @@ export function createTimer() {
         }
         
         updateDisplay();
+        updateSkipButton()
         isRunning = false;
         startBtn.disabled = false;
         pauseBtn.disabled = true;
@@ -113,10 +145,12 @@ export function createTimer() {
     function initialise() {
         sessionsCount.textContent = sessionsCompleted;
         updateDisplay();
+        updateSkipButton();
         
         startBtn.addEventListener('click', startTimer);
         pauseBtn.addEventListener('click', pauseTimer);
         resetBtn.addEventListener('click', resetTimer);
+        skipBtn.addEventListener('click', skipBreak);
     }
 
     // Call initialize immediately
@@ -137,6 +171,7 @@ export function createTimer() {
         start: startTimer,
         pause: pauseTimer,
         reset: resetTimer,
+        skip: skipBreak,
         
         get time() { return timeLeft; },
         get active() { return isRunning; },
