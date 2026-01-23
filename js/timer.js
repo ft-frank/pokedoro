@@ -13,12 +13,13 @@ export function createTimer() {
    
     //Frank - initialising values
 
-    let focusTime = (Number(localStorage.getItem("focusTime")) ?? 25) * 60;
-    let breakTime = (Number(localStorage.getItem("breakTime")) ?? 5) * 60;
+    let focusTime = (Number(localStorage.getItem("focusTime")) || 25) * 60;
+    let breakTime = (Number(localStorage.getItem("breakTime")) || 5) * 60;
 
 
     // State
     let timeLeft = focusTime
+    console.log(Number(localStorage.getItem("focusTime")))
     let isRunning = false;
     let isPaused = false;
     let interval = null;
@@ -32,8 +33,10 @@ export function createTimer() {
     }
 
     function updateDisplay() {
+        console.log(timeLeft)
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
+        console.log(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         title.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} - Pokedoro`; //Frank - update the tab above
     }
