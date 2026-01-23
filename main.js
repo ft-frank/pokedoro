@@ -1,7 +1,10 @@
+
 import {createSettings} from './js/settings.js'
 import {createTimer} from './js/timer.js'
 import {createThemeManager} from './js/theme.js'
+import {Load} from './js/loading.js'
 
+Load()
 
 // DOM elements
 const squirtleBtn = document.getElementById('squirtle-theme-btn');
