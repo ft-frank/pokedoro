@@ -51,8 +51,8 @@ export function createSettings(timer) {
             settingsModal.classList.add('active');
             
             //Frank - settings are saved within the settings tab
-            focusInput.value = Number(localStorage.getItem('focusTime')) ?? 25
-            breakInput.value = Number(localStorage.getItem('breakTime')) ?? 5
+            focusInput.value = localStorage.getItem('focusTime') ?? 25
+            breakInput.value = localStorage.getItem('breakTime') ?? 5
             
         });
 
